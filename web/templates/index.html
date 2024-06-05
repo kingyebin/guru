@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GURU</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">G</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active" onclick="showMainPage()">Home</a></li>
+                 <li><a href="#" onclick="showRecommendPage()">Recommend</a></li>
+                <li class="dropdown">
+                    <a href="#">Upcoming</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="loadGames('upcoming_2024', 'upcoming', '2024+ Release')">2024+ Release</a>
+                        <a href="#" onclick="loadGames('upcoming_tba', 'upcoming', 'TBA Games')">TBA Games</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Popular</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="loadGames('youtube_popularity', 'popular', 'YouTube Popularity')">YouTube Popularity</a>
+                        <a href="#" onclick="loadGames('twitch_popularity', 'popular', 'Twitch Popularity')">Twitch Popularity</a>
+                        <a href="#" onclick="loadGames('reddit_popularity', 'popular', 'Reddit Popularity')">Reddit Popularity</a>
+                        <a href="#" onclick="loadGames('user_suggestions', 'popular', 'User Suggestions')">User Suggestions</a>
+                        <a href="#" onclick="loadGames('text_reviews_count', 'popular', 'Text Reviews Count')">Text Reviews Count</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Category</a>
+                    <div class="dropdown-content">
+                        <a href="#" >Platforms</a>
+                        <a href="#" >Genres</a>
+                        <a href="#" >Themes</a>
+                        <a href="#" >Modes</a>
+                        <a href="#" >Developers</a>
+                        <a href="#" >Publishers</a>
+                        <a href="#" >Tags</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="Search">
+            <button onclick="searchGames()">
+                <span></span>
+                <span>&gt;</span>
+            </button>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>GURU</h1>
+                    <p>We help users easily find the game that suits them through customized recommendations that cover a variety of game types and all platforms, taking into account game themes, genres, and game methods.</p>
+                    <button class="recommend-button" onclick="showRecommendPage()">Recommend</button>
+                </div>
+                <div class="hero-image">
+                    <img src="{{ url_for('static', filename='images/guru_icon.png') }}" alt="GURU Icon">
+                </div>
+            </div>
+            <div class="decorations">
+                <img src="{{ url_for('static', filename='images/cloud_1.png') }}" class="cloud_1" alt="Cloud 1">
+                <img src="{{ url_for('static', filename='images/cloud_2.png') }}" class="cloud_2" alt="Cloud 2">
+                <img src="{{ url_for('static', filename='images/line_1.png') }}" class="line_1" alt="Line 1">
+                <img src="{{ url_for('static', filename='images/line_1.png') }}" class="line_3" alt="Line 1">
+                <img src="{{ url_for('static', filename='images/line_2.png') }}" class="line_2" alt="Line 2">
+                <img src="{{ url_for('static', filename='images/rhombus_1.png') }}" class="rhombus_1" alt="Rhombus 1">
+                <img src="{{ url_for('static', filename='images/rhombus_2.png') }}" class="rhombus_2" alt="Rhombus 2">
+                <img src="{{ url_for('static', filename='images/rhombus_2.png') }}" class="rhombus_2" alt="Rhombus 2">
+                <img src="{{ url_for('static', filename='images/circle_1.png') }}" class="circle_1" alt="Circle 1">
+                <img src="{{ url_for('static', filename='images/circle_1.png') }}" class="circle_1" alt="Circle 1">
+                <img src="{{ url_for('static', filename='images/circle_2.png') }}" class="circle_2" alt="Circle 2">
+                <img src="{{ url_for('static', filename='images/circle_2.png') }}" class="circle_2" alt="Circle 2">
+                <img src="{{ url_for('static', filename='images/circle_3.png') }}" class="circle_3" alt="Circle 3">
+                <img src="{{ url_for('static', filename='images/star.png') }}" class="star" alt="Star">
+            </div>
+        </section>
+        <section class="top-ratings" id="top-ratings">
+            <div class="top-ratings-header">
+                <h2>Top Ratings Games</h2>
+                <div class="arrows">
+                    <span class="arrow" onclick="prevPage()">&lt;</span>
+                    <span class="arrow" onclick="nextPage()">&gt;</span>
+                </div>
+            </div>
+            <div class="game-list" id="game-list">
+                <!-- 게임 목록이 여기에 동적으로 로드됩니다 -->
+            </div>
+        </section>
+        <section class="search-results" id="search-results">
+            <div class="search-results-header" id="search-results-header"></div>
+            <div class="game-list" id="search-game-list">
+                <!-- 검색된 게임 목록이 여기에 동적으로 로드됩니다 -->
+            </div>
+        </section>
+        <section class="upcoming" id="upcoming">
+            <div class="upcoming-header" id="upcoming-header"></div>
+            <div class="game-list" id="upcoming-game-list">
+                <!-- 2024+ 또는 TBA 게임 목록이 여기에 동적으로 로드됩니다 -->
+            </div>
+        </section>
+        <section class="popular" id="popular">
+            <div class="popular-header" id="popular-header"></div>
+            <div class="game-list" id="popular-game-list">
+                <!-- 인기 게임 목록이 여기에 동적으로 로드됩니다 -->
+            </div>
+        </section>
+        <section class="recommend" id="recommend">
+            <div class="recommend-header">
+                <h2>Recommend</h2>
+            </div>
+            <div class="category-buttons">
+                <button class="category-button" onclick="loadUniqueValues('platforms')">Platform</button>
+                <button class="category-button" onclick="loadUniqueValues('genre')">Genre</button>
+                <button class="category-button" onclick="loadUniqueValues('theme')">Theme</button>
+                <button class="category-button" onclick="loadUniqueValues('mode')">Mode</button>
+                <button class="category-button" onclick="showYearSliders()">Year</button>
+                <button class="category-button" onclick="showRatingSliders()">Ratings</button>
+                <button class="category-button" onclick="loadUniqueValues('tags')">Tags</button>
+            </div>
+            <div class="unique-values-container">
+                <div class="unique-values" id="unique-values">
+                    <!-- 유니크 값들이 여기에 동적으로 로드됩니다 -->
+                </div>
+            </div>
+            <div class="selected-values">
+                <p>Platform: <span id="selected-platforms"></span></p>
+                <p>Genres: <span id="selected-genres"></span></p>
+                <p>Themes: <span id="selected-themes"></span></p>
+                <p>Mode: <span id="selected-modes"></span></p>
+                <p>Year: <span id="selected-years"></span></p>
+                <p>Ratings: <span id="selected-ratings"></span></p>
+                <p>Tags: <span id="selected-tags"></span></p>
+            </div>
+            <div class="selected-unique-values" id="selected-unique-values">
+                <!-- 선택된 유니크 값들이 여기에 동적으로 로드됩니다 -->
+            </div>
+            <div class="recommend-actions">
+                <button>Refresh</button>
+                <button onclick="getRecommendedGames()">Recommend</button>
+            </div>    
+            <div class="recommended-games" id="recommended-games">
+                <!-- 추천된 게임 목록이 여기에 동적으로 로드됩니다 -->
+            </div>        
+        </section>        
+    </main>
+    <div id="game-modal" class="modal">
+        <div class="modal-content" id="modal-game-info">
+            <!-- 게임 상세 정보가 여기에 동적으로 로드됩니다 -->
+        </div>
+        <span class="close" onclick="closeModal()">&times;</span>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

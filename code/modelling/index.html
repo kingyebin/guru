@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding-top: 50px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .button-group button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results div {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Game Recommendation System</h1>
+        <div class="input-group">
+            <label for="game-name">Game Name:</label>
+            <input type="text" id="game-name" placeholder="Enter game name">
+        </div>
+        <div class="button-group">
+            <button onclick="searchGame()">Search</button>
+            <button onclick="getRecommendations()">Get Recommendations</button>
+        </div>
+        <div class="input-group">
+            <label for="filter-genre">Genre:</label>
+            <input type="text" id="filter-genre" placeholder="Enter genre">
+        </div>
+        <div class="input-group">
+            <label for="filter-theme">Theme:</label>
+            <input type="text" id="filter-theme" placeholder="Enter theme">
+        </div>
+        <div class="input-group">
+            <label for="filter-developers">Developers:</label>
+            <input type="text" id="filter-developers" placeholder="Enter developers">
+        </div>
+        <div class="input-group">
+            <label for="filter-publishers">Publishers:</label>
+            <input type="text" id="filter-publishers" placeholder="Enter publishers">
+        </div>
+        <div class="input-group">
+            <label for="filter-tags">Tags:</label>
+            <input type="text" id="filter-tags" placeholder="Enter tags">
+        </div>
+        <button onclick="filterGames()">Filter Games</button>
+        <div class="results" id="results"></div>
+    </div>
+
+    <script>
+        async function searchGame() {
+            const name = document.getElementById('game-name').value;
+            const response = await fetch(`http://127.0.0.1:5000/recommend?name=${name}`);
+            const data = await response.json();
+            displayResults(data);
+        }
+
+        async function getRecommendations() {
+            const name = document.getElementById('game-name').value;
+            const response = await fetch(`http://127.0.0.1:5000/recommend?name=${name}`);
+            const data = await response.json();
+            displayResults(data);
+        }
+
+        async function filterGames() {
+            const genre = document.getElementById('filter-genre').value;
+            const theme = document.getElementById('filter-theme').value;
+            const developers = document.getElementById('filter-developers').value;
+            const publishers = document.getElementById('filter-publishers').value;
+            const tags = document.getElementById('filter-tags').value;
+            const url = `http://127.0.0.1:5000/filter?genre=${genre}&theme=${theme}&developers=${developers}&publishers=${publishers}&tags=${tags}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            displayResults(data);
+        }
+
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            if (Array.isArray(data)) {
+                data.forEach(game => {
+                    const gameDiv = document.createElement('div');
+                    gameDiv.textContent = game;
+                    resultsDiv.appendChild(gameDiv);
+                });
+            } else {
+                const gameDiv = document.createElement('div');
+                gameDiv.textContent = JSON.stringify(data);
+                resultsDiv.appendChild(gameDiv);
+            }
+        }
+    </script>
+</body>
+</html>

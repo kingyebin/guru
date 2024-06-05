@@ -13,7 +13,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # 1. 기존 데이터 프레임 불러오기
 csv_path = "cleansing_game_data.csv"
 games_df = pd.read_csv(csv_path, index_col=0)
-recommend_num = 10
+recommend_num = 12
 
 # 2. user_data
 # 2-1) 입력값 데이터프레임으로 불러오기

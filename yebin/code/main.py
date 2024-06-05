@@ -161,6 +161,7 @@ def reommendation(recommend_num, df, cos_sim):
     sorted_pred_sim_games = sorted(pred_sim_games, key=lambda x: x[1], reverse=True)[1:]
 
     reommendation_list = []
+    similarity_list =  []
     max_recommendations = min(recommend_num, len(df) - 1)
 
     for i, item in enumerate(sorted_pred_sim_games):
@@ -168,6 +169,8 @@ def reommendation(recommend_num, df, cos_sim):
             break
         recommendation_game = df[df.index == item[0]]["id"].values[0]
         reommendation_list.append(recommendation_game)
+        similarity = str(round(item[1] * 100, 3)) + "%"
+        similarity_list.append(similarity)
 
     return reommendation_list
 

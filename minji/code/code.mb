@@ -1,3 +1,0 @@
-1. find : 결측치 데이터를 찾기 위해 크롤링한 코드
-2. missing_value: 각 결측치 처리한 notebook 
-3. modelling: 추천 시스템 모델링 테스트 코드

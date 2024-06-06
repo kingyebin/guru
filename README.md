@@ -53,3 +53,20 @@
 - `index.html`: 웹 페이지 템플릿 파일입니다.
 - `app.py`: 웹 애플리케이션 메인 파일입니다.
 - `main.py`: 추천 시스템 알고리즘 파일입니다.
+
+## `yebin` 폴더 구조
+`yebin` 폴더는 주요 코드와 데이터를 포함하고 있으며, 아래와 같은 구조로 되어 있습니다.
+
+### 1. 코드 폴더 (`code`)
+- `igdb_processing.ipynb`: igdb 데이터를 전처리하는 노트북입니다.
+- `test.ipynb`: 가공된 igdb 데이터를 이용해 실험 및 평가하는 노트북입니다.
+- `rawg_processing.ipynb`: rawg 데이터를 전처리하는 노트북입니다.
+- `web_recommend.ipynb`: rawg 데이터로 필터링 및 추천 과정을 확인하는 노트북입니다.
+- `main.py`: 웹 구현에 사용되는 추천 시스템 알고리즘 파일입니다.
+
+### 2. 데이터 폴더 (`data`)
+- `igdb_pc_score.csv`: 실험 후 평가 지표를 통해 기록한 점수 파일입니다.
+- `final_data.zip`: 정제된 게임 데이터 파일입니다.
+  - `final_igdb_pc.csv`: 실험 및 평가를 위한 정제된 igdb(플랫폼:pc) 게임 정보 파일입니다.
+  - 'final_rawg.csv': 실제 추천 시스템에 사용되는 정제된 rawg 게임 데이터입니다.
+

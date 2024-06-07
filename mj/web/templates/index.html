@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <div class="logo">G</div>
         <nav>
             <ul>
                 <li><a href="#" class="active" onclick="showMainPage()">Home</a></li>
-                 <li><a href="#" onclick="showRecommendPage()">Recommend</a></li>
+                <li><a href="#" onclick="showRecommendPage()">Recommend</a></li>
+                <li><a href="#" onclick="showStatsPage()">Stats</a></li>
+                <!-- Dropdown Menus -->
                 <li class="dropdown">
                     <a href="#">Upcoming</a>
                     <div class="dropdown-content">
@@ -34,17 +37,18 @@
                 <li class="dropdown">
                     <a href="#">Category</a>
                     <div class="dropdown-content">
-                        <a href="#" >Platforms</a>
-                        <a href="#" >Genres</a>
-                        <a href="#" >Themes</a>
-                        <a href="#" >Modes</a>
-                        <a href="#" >Developers</a>
-                        <a href="#" >Publishers</a>
-                        <a href="#" >Tags</a>
+                        <a href="#" data-category="platforms">Platforms</a>
+                        <a href="#" data-category="genres">Genres</a>
+                        <a href="#" data-category="themes">Themes</a>
+                        <a href="#" data-category="modes">Modes</a>
+                        <a href="#" data-category="developers">Developers</a>
+                        <a href="#" data-category="publishers">Publishers</a>
+                        <a href="#" data-category="tags">Tags</a>
                     </div>
                 </li>
             </ul>
         </nav>
+        <!-- Search Container -->
         <div class="search-container">
             <input type="text" placeholder="Search">
             <button onclick="searchGames()">
@@ -53,7 +57,10 @@
             </button>
         </div>
     </header>
+
+    <!-- Main Content -->
     <main>
+        <!-- Hero Section -->
         <section class="hero" id="hero">
             <div class="hero-content">
                 <div class="hero-text">
@@ -65,6 +72,7 @@
                     <img src="{{ url_for('static', filename='images/guru_icon.png') }}" alt="GURU Icon">
                 </div>
             </div>
+            <!-- Decorations -->
             <div class="decorations">
                 <img src="{{ url_for('static', filename='images/cloud_1.png') }}" class="cloud_1" alt="Cloud 1">
                 <img src="{{ url_for('static', filename='images/cloud_2.png') }}" class="cloud_2" alt="Cloud 2">
@@ -82,6 +90,8 @@
                 <img src="{{ url_for('static', filename='images/star.png') }}" class="star" alt="Star">
             </div>
         </section>
+
+        <!-- Top Ratings Section -->
         <section class="top-ratings" id="top-ratings">
             <div class="top-ratings-header">
                 <h2>Top Ratings Games</h2>
@@ -94,24 +104,56 @@
                 <!-- 게임 목록이 여기에 동적으로 로드됩니다 -->
             </div>
         </section>
+
+        <!-- Search Results Section -->
         <section class="search-results" id="search-results">
             <div class="search-results-header" id="search-results-header"></div>
             <div class="game-list" id="search-game-list">
                 <!-- 검색된 게임 목록이 여기에 동적으로 로드됩니다 -->
             </div>
         </section>
-        <section class="upcoming" id="upcoming">
+
+        <!-- Stats Section -->
+        <section class="stats" id="stats" style="display: none;">
+            <div class="stats-header">
+                <h2>Game Statistics</h2>
+            </div>
+            <div class="stats-buttons">
+                <button class="stats-button" data-type="social_media">Social Media</button>
+                <button class="stats-button" data-type="rating_reviews">Rating vs Reviews</button>
+                <button class="stats-button" data-type="yearly_additions">Yearly Additions</button>
+                <button class="stats-button" data-type="genre_ratings">Genre Ratings</button>
+                <button class="stats-button" data-type="review_rating">Review Count vs Rating</button>
+                <button class="stats-button" data-type="developer_ratings">Developer Ratings</button>
+            </div>
+            <div class="stats-content" id="stats-content">
+                <!-- 통계 그래프가 여기에 동적으로 로드됩니다 -->
+            </div>
+        </section>
+
+        <!-- Category Section -->
+        <section class="category" id="category" style="display: none;">
+            <h2 class="category-header" id="category-header"></h2>
+            <div class="category-list"></div>
+        </section>
+
+        <!-- Upcoming Section -->
+        <section class="upcoming" id="upcoming" style="display: none;">
             <div class="upcoming-header" id="upcoming-header"></div>
             <div class="game-list" id="upcoming-game-list">
                 <!-- 2024+ 또는 TBA 게임 목록이 여기에 동적으로 로드됩니다 -->
             </div>
         </section>
-        <section class="popular" id="popular">
+
+        <!-- Popular Section -->
+        <section class="popular" id="popular" style="display: none;">
             <div class="popular-header" id="popular-header"></div>
             <div class="game-list" id="popular-game-list">
                 <!-- 인기 게임 목록이 여기에 동적으로 로드됩니다 -->
             </div>
         </section>
+
+        <!-- Recommend Section -->
         <section class="recommend" id="recommend">
             <div class="recommend-header">
                 <h2>Recommend</h2>
@@ -143,20 +185,25 @@
                 <!-- 선택된 유니크 값들이 여기에 동적으로 로드됩니다 -->
             </div>
             <div class="recommend-actions">
-                <button>Refresh</button>
-                <button onclick="getRecommendedGames()">Recommend</button>
+                <button onclick="resetSelectedValues()">Refresh</button>
+                <button onclick="recommendGames()">Recommend</button>
             </div>    
             <div class="recommended-games" id="recommended-games">
                 <!-- 추천된 게임 목록이 여기에 동적으로 로드됩니다 -->
             </div>        
         </section>        
     </main>
+
+    <!-- Game Modal -->
     <div id="game-modal" class="modal">
         <div class="modal-content" id="modal-game-info">
             <!-- 게임 상세 정보가 여기에 동적으로 로드됩니다 -->
         </div>
         <span class="close" onclick="closeModal()">&times;</span>
     </div>
+    
+    <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

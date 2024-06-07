@@ -1,3 +1,4 @@
+/* 기본 스타일 */
 body {
     margin: 0;
     padding: 0;
@@ -6,16 +7,18 @@ body {
     color: #FFFFFF;
 }
 
+/* 헤더 스타일 */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
+    padding: 35px;
     background-color: #000013;
     z-index: 100; /* Dropdown 끊김 문제 해결 */
     position: relative;
 }
 
+/* 로고 스타일 */
 .logo {
     font-size: 30px;
     font-weight: bold;
@@ -44,6 +47,7 @@ header {
     z-index: 0;
 }
 
+/* 네비게이션 스타일 */
 nav ul {
     list-style: none;
     display: flex;
@@ -58,10 +62,7 @@ nav a {
     color: #FFFFFF;
 }
 
-nav a.active {
-    color: #F5F7F8;
-}
-
+nav a.active,
 nav a:hover {
     color: #F5F7F8;
     background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
@@ -69,6 +70,7 @@ nav a:hover {
     -webkit-text-fill-color: transparent;
 }
 
+/* 드롭다운 스타일 */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -99,6 +101,7 @@ nav a:hover {
     display: block;
 }
 
+/* 검색 컨테이너 스타일 */
 .search-container {
     display: flex;
     align-items: center;
@@ -114,17 +117,16 @@ nav a:hover {
     outline: none;
     background: transparent;
     color: #FFFFFF;
-    font-family: 'VT323', monospace;
     font-size: 18px;
     padding: 5px;
     flex-grow: 1;
+    font-family: 'VT323', monospace;
 }
 
 .search-container button {
     border: none;
     background: transparent;
     color: #FFFFFF;
-    font-family: 'VT323', monospace;
     font-size: 18px;
     cursor: pointer;
     display: flex;
@@ -136,49 +138,26 @@ nav a:hover {
     font-size: 24px;
 }
 
-.search-results {
-    display: none;
+/* 섹션 스타일 */
+.hero,
+.top-ratings,
+.search-results,
+.upcoming,
+.popular,
+.stats,
+.category {
     padding: 100px;
     color: #FFFFFF;
 }
 
-.search-results-header h2 {
-    font-size: 40px;
-    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.upcoming {
-    display: none;
-    padding: 100px;
+.recommend {
+    padding: 80px;
     color: #FFFFFF;
-}
-
-.upcoming-header h2 {
-    font-size: 40px;
-    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.popular {
-    display: none;
-    padding: 100px;
-    color: #FFFFFF;
-}
-
-.popular-header h2 {
-    font-size: 40px;
-    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .hero {
     text-align: center;
     padding: 120px;
-    color: #FFFFFF;
     position: relative;
 }
 
@@ -187,78 +166,84 @@ nav a:hover {
     z-index: -1; /* moveLinear 애니메이션이 뒤에 표시되게 하기 */
 }
 
+.hero .cloud_1,
+.hero .cloud_2,
+.hero .line_1,
+.hero .line_2,
+.hero .line_3 {
+    animation: moveLinear 60s linear infinite;
+}
+
 .hero .cloud_1 {
     top: 10%;
     right: 45%;
-    width: 200px; /* 원하는 너비로 변경 */
-    height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
-    animation: moveLinear 60s linear infinite;
+    width: 200px;
+    height: auto;
 }
 
 .hero .cloud_2 {
     top: 8%;
     left: 10%;
-    width: 300px; /* 원하는 너비로 변경 */
-    height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
-    animation: moveLinear 60s linear infinite;
+    width: 300px;
+    height: auto;
 }
 
 .hero .line_1 {
     bottom: 30%;
     left: 20%;
-    animation: moveLinear 60s linear infinite;
 }
 
 .hero .line_2 {
     bottom: 55%;
     right: 50%;
-    animation: moveLinear 60s linear infinite;
 }
 
 .hero .line_3 {
     bottom: 10%;
     right: 30%;
-    animation: moveLinear 60s linear infinite;
+}
+
+.hero .rhombus_1,
+.hero .rhombus_2,
+.hero .circle_1,
+.hero .circle_2,
+.hero .circle_3,
+.hero .star {
+    animation: moveVertical 3s ease-in-out infinite alternate;
 }
 
 .hero .rhombus_1 {
     top: 5%;
     right: 10%;
-    animation: moveVertical 3s ease-in-out infinite alternate;
 }
 
 .hero .rhombus_2 {
     bottom: 55%;
     left: 10%;
-    animation: moveVertical 3s ease-in-out infinite alternate;
 }
 
 .hero .circle_1 {
     bottom: 4%;
     right: 50%;
-    width: 20px; /* 원하는 너비로 변경 */
-    height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
-    animation: moveVertical 3s ease-in-out infinite alternate;
+    width: 20px;
+    height: auto;
 }
 
 .hero .circle_2 {
     bottom: 50%;
     left: 20%;
-    width: 10px; /* 원하는 너비로 변경 */
-    height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
-    animation: moveVertical 3s ease-in-out infinite alternate;
+    width: 10px;
+    height: auto;
 }
 
 .hero .circle_3 {
     top: 5%;
     right: 45%;
-    animation: moveVertical 3s ease-in-out infinite alternate;
 }
 
 .hero .star {
     bottom: 5%;
     left: 25%;
-    animation: moveVertical 3s ease-in-out infinite alternate;
 }
 
 .hero-content {
@@ -334,7 +319,6 @@ nav a:hover {
 
 .top-ratings {
     padding: 50px;
-    color: #FFFFFF;
 }
 
 .top-ratings-header {
@@ -343,16 +327,35 @@ nav a:hover {
     align-items: center;
 }
 
-.top-ratings h2 {
+.top-ratings h2,
+.search-results-header h2,
+.upcoming-header h2,
+.popular-header h2,
+.recommend-header h2,
+.category-header h2,
+.stats-header h2 {
     font-size: 40px;
     background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.arrows {
+.game-list,
+.search-results-header,
+.upcoming-game-list,
+.popular-game-list,
+.recommended-games,
+.category-list,
+.stats-content {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.top-ratings #game-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
 }
 
 .arrow {
@@ -363,25 +366,24 @@ nav a:hover {
     -webkit-text-fill-color: transparent;
 }
 
-.game-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
 .game-item {
     background-color: #1a1a6800;
     padding: 10px;
     border-radius: 30px;
     text-align: center;
     width: 200px;
+    height: 200px;
     color: #FFFFFF;
     border: 2px solid;
     border-image: linear-gradient(180deg, #F5FEFF 0%, #5CFDFF 25%, #1830B6 55%, #B40EB0 85%, #EB15F8 100%);
     border-image-slice: 1;
-    width: 200px;
-    height: 200px;
+}
+
+.game-item:hover {
+    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(1.05); /* 호버 시 약간 확대 효과 */
 }
 
 .game-image {
@@ -393,24 +395,23 @@ nav a:hover {
 }
 
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; 
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 100%; 
+    width: 100%;
     max-width: 1000px;
     color: #000;
 }
@@ -457,6 +458,7 @@ nav a:hover {
     cursor: pointer;
 }
 
+/* 애니메이션 */
 @keyframes moveLinear {
     0% { transform: translateX(0); }
     100% { transform: translateX(100%); }
@@ -467,12 +469,21 @@ nav a:hover {
     100% { transform: translateY(20px); }
 }
 
+/* 추천 섹션 스타일 */
 .recommend-header h2 {
     font-size: 40px;
     background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
+}
+
+.category-header h2 {
+    font-size: 40px;
+    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: left;
 }
 
 .category-buttons {
@@ -491,6 +502,7 @@ nav a:hover {
     cursor: pointer;
     font-family: 'VT323', monospace;
     font-size: 25px;
+    transform: scale(1.05); /* 호버 시 약간 확대 효과 */
 }
 
 .unique-values-container {
@@ -509,9 +521,10 @@ nav a:hover {
     margin: 5px;
     font-family: 'VT323', monospace;
     font-size: 17px;
+    transform: scale(1.05); /* 호버 시 약간 확대 효과 */
 }
 
-.selected-unique-values{
+.selected-unique-values {
     max-height: 90px;
     overflow-y: auto;
     margin-bottom: 20px;
@@ -520,7 +533,7 @@ nav a:hover {
 }
 
 .unique-values,
-.selected-values{
+.selected-values {
     padding-right: 25px;
     padding-left: 25px;
     font-size: 25px;
@@ -532,7 +545,6 @@ nav a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
 
 .selected-unique-value {
     display: inline-block;
@@ -559,7 +571,7 @@ nav a:hover {
     margin-top: 20px;
 }
 
-.recommend-actions button{
+.recommend-actions button {
     padding: 10px 20px;
     background: linear-gradient(90deg, #C2D1F1 0%, #608FB9 50%, #027CCC 100%);
     border: none;
@@ -571,51 +583,8 @@ nav a:hover {
     font-family: 'VT323', monospace;
 }
 
-.rating-slider {
-    font-size: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.rating-slider input[type="range"] {
-    width: 350px;
-    max-width: 300px;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 10px;
-    border-radius: 20px;
-    color: #ffffff;
-    outline: none;
-    transition: opacity 0.2s;
-}
-
-.rating-slider input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 30px;
-    height: 30px;
-    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
-    cursor: pointer;
-    border-radius: 20px;
-}
-
-.rating-slider input[type="range"]::-moz-range-thumb {
-    width: 30px;
-    height: 30px;
-    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
-    cursor: pointer;
-    border-radius: 20px;
-}
-
-#slider-value {
-    font-size: 25px;
-    color: #FFFFFF;
-}
-
-/* 추가할 CSS */
+/* 슬라이더 스타일 */
+.rating-slider,
 .year-slider {
     font-size: 25px;
     display: flex;
@@ -625,6 +594,7 @@ nav a:hover {
     margin-top: 20px;
 }
 
+.rating-slider input[type="range"],
 .year-slider input[type="range"] {
     width: 350px;
     max-width: 300px;
@@ -637,6 +607,7 @@ nav a:hover {
     transition: opacity 0.2s;
 }
 
+.rating-slider input[type="range"]::-webkit-slider-thumb,
 .year-slider input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -647,6 +618,7 @@ nav a:hover {
     border-radius: 20px;
 }
 
+.rating-slider input[type="range"]::-moz-range-thumb,
 .year-slider input[type="range"]::-moz-range-thumb {
     width: 30px;
     height: 30px;
@@ -655,17 +627,93 @@ nav a:hover {
     border-radius: 20px;
 }
 
+#slider-value,
 #year-slider-value {
     font-size: 25px;
     color: #FFFFFF;
 }
 
-.recommend .recommended-games {
-    margin-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 5px;
+/* 카테고리 섹션 스타일 */
+.category-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 20px;
+}
+
+.unique-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 30px;
+    background-color: #000013;
+    font-family: 'VT323', monospace;
+    color: #FFFFFF;
+    border-image: linear-gradient(90deg, #F5FEFF 0%, #5CFDFF 25%, #1830B6 55%, #B40EB0 85%, #EB15F8 100%);
+    border-image-slice: 1;
+    cursor: pointer; /* 커서 스타일 추가 */
+}
+
+.unique-box:hover {
+    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(1.05);
+}
+
+.unique-name {
+    font-size: 35px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.unique-count {
+    font-size: 23px;
+}
+
+.stats-header h2 {
+    font-size: 40px;
+    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 35px;
+}
+
+.stats-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.stats-buttons button {
+    padding: 10px 20px;
+    border-radius: 20px; /* 둥근 직사각형을 위해 20px로 설정 */
+    background: #000013;
+    border: 2px solid;
+    border-image: linear-gradient(180deg, #F5FEFF 0%, #5CFDFF 25%, #1830B6 55%, #B40EB0 85%, #EB15F8 100%);
+    border-image-slice: 1;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+}
+
+.stats-buttons button:hover {
+    background: linear-gradient(90deg, #F5F7F8 0%, #79AED0 63%, #057DCF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(1.05); /* 호버 시 약간 확대 효과 */
+}
+
+.stats-content {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 35px;
 }
